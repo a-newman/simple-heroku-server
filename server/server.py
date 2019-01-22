@@ -120,12 +120,11 @@ class S(SimpleHTTPRequestHandler):
             self.send_error(500, "Internal server error: {}".format(e))
         
 def run(server_class=HTTPServer, handler_class=S, port=8000):
-    # if we are on heroku, set the port according to heroku's instructions 
-    ON_HEROKU = os.environ.get('ON_HEROKU', False)    
-    if ON_HEROKU: 
-        port = int(os.environ.get('PORT'))
-        print("Found port via Heroku: %d", port)
-
+    # Get the environment variable PORT
+    environ_port = os.environ.get('PORT')
+    # TODO: if environ_port is not NONE, convert it to an int and set
+    # `port` to that int, so that this will run correctly on Heroku.
+    # Your code here
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print('Starting httpd on port %d...' % port)
