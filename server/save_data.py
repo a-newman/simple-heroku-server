@@ -1,6 +1,7 @@
 import json
 import os
 from pymongo import MongoClient
+from pathlib import Path
 
 MONGO_URI = os.environ.get('MONGO_URI')
 

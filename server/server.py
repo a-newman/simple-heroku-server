@@ -28,7 +28,7 @@ class SaveMethod(Enum):
     LOCAL = save_locally
     MONGO = save_mongo
 
-SAVE_METHOD = SaveMethod.MONGO
+SAVE_METHOD = SaveMethod.LOCAL
 COUNTER = "server/counter.txt"
 INDEX = "index.html"
 
