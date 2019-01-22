@@ -3,7 +3,7 @@
 Very simple HTTP server in python.
 
 Usage::
-    ./dummy-web-server.py [<port>]
+    python3 server.py [<port>]
 
 Send a GET request::
     curl http://localhost
@@ -33,6 +33,13 @@ COUNTER = "server/counter.txt"
 INDEX = "index.html"
 
 def get_querystring(path): 
+    """
+    A helper function that takes in a url and returns the query string as
+    a dictionary. 
+
+    For instance, given a website like "google.com?query=pugs", this function
+    will return the dictionary {'query': 'pugs'}
+    """
     pairs = {}
     qstring = path.split('?')
     if len(qstring) == 1: 
@@ -46,12 +53,21 @@ def get_querystring(path):
     return pairs
 
 def strip_qstring(path): 
+    """
+    A helper function that removes the query string from a url. 
+    
+    For instance, given a url like "google.com?query=pugs", returns 
+    "google.com".
+    """
     p = path.split('?')
     if len(p) == 1: 
         return path
     return "".join(p[:-1])
 
 class S(SimpleHTTPRequestHandler):
+    """ 
+    Class for handling an HTTP request. 
+    """
     def _set_headers(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
@@ -71,18 +87,6 @@ class S(SimpleHTTPRequestHandler):
                         infile.seek(0)
                         infile.write(str(counter + 1))
                 self.wfile.write(str(counter).encode())
-                return
-            elif (base_path == '/reset'): 
-                self._set_headers()
-                with open(COUNTER, 'w') as outfile: 
-                        outfile.write(str(0))
-                self.wfile.write(str(0).encode())
-                return
-            elif (base_path == '/view'): 
-                self._set_headers()
-                with open(COUNTER, 'r') as infile: 
-                    counter = int(infile.read().strip())
-                    self.wfile.write(str(counter).encode())
                 return
             else: 
                 # override the default behavior of the simple handler
