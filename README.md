@@ -18,14 +18,14 @@
   e. In additional to showing the file `index.html`, Our website also keeps a simple counter of the number of people that visit the path `/counter`. Go to `localhost:8000/counter`. Refresh the page a few times and see what happens. 
 2. Get a little familiar with the files `server.py` and `save_file.py` in the `server` file.
 3. Let's get started with Heroku! Go online and make an account. You should NOT need a credit card for this. 
-[https://www.heroku.com/](https://www.heroku.com/)
+https://www.heroku.com/
 4. Create a Heroku app! Check out these instructions. 
 `https://devcenter.heroku.com/articles/git#creating-a-heroku-remote`
 You should get an error when you try to run your app! You are still missing two
 important files. 
 First, something called a `Procfile` that tells Heroku how to run your app. 
-[https://devcenter.heroku.com/articles/procfile](about the Procfile)
+https://devcenter.heroku.com/articles/procfile
 Second, a `requirements.txt` file that tells Heroku what Python libraries you need to run your app. 
-[https://devcenter.heroku.com/articles/python-pip](about Python requirements)
+https://devcenter.heroku.com/articles/python-pip
 
 Read the documentation and try to get your app working! I will be around to answer questions and help you along, so if you get stuck, let me know! 
