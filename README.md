@@ -11,7 +11,7 @@
 ## Instructions 
 
 1. First, try out the server "locally": that means, from your own computer, to check that everything is working. 
-  a. Run the server with the following command: `python3 server/server.py`. 
+  a. Run the server with the following command: `python3 server/server.py`. You should get an error telling you that some files are not downloaded! Make a virtual environment inside this folder and download the files you need using pip. Learn how to make a virtual environment here: https://packaging.python.org/guides/installing-using-pip-and-virtualenv/
   b. You should see output like: `Starting httpd on port 8000...`
   c. Go to the following url: `localhost:8000`
   d. Play around with the web page! Try submitting your name to the "database". Right now, the "database" is just a folder that stores files. If everything is working, after you submit your name, you should see a new file in the folder `server/data`. Open it and make sure that your name was stored! 
