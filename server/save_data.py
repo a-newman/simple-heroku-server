@@ -1,10 +1,7 @@
 import json
-import boto3
 import os
-from pathlib import Path
 from pymongo import MongoClient
 
-S3_BUCKET = os.environ.get('SSS_BUCKET')
 MONGO_URI = os.environ.get('MONGO_URI')
 
 def save_locally(key, data): 
@@ -24,17 +21,6 @@ def _save_locally(path, key, data):
     with data_file.open('w') as f: 
         json.dump(data, f)
     return filename
-
-def save_s3(key, data): 
-    if not S3_BUCKET:
-        raise RuntimeError("No S3 bucket supplied to put data in!") 
-    else: 
-        print("Sending to s3 bucket %s" % S3_BUCKET)
-    s3 = boto3.resource('s3')
-    bytestring = json.dumps(data).encode()
-    r = s3.Object(S3_BUCKET, key).put(Body=bytestring, ContentType='application/json')
-    print(r)
-    return
 
 def save_mongo(key, data): 
     print("Saving to mongo")

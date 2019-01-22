@@ -22,11 +22,10 @@ import shutil
 import json
 import uuid
 from enum import Enum
-from save_data import save_locally, save_s3, save_mongo
+from save_data import save_locally, save_mongo
 
 class SaveMethod(Enum): 
     LOCAL = save_locally
-    S3 = save_s3
     MONGO = save_mongo
 
 SAVE_METHOD = SaveMethod.MONGO
@@ -96,9 +95,7 @@ class S(SimpleHTTPRequestHandler):
         self._set_headers()
         
     def do_POST(self):
-        # When it receives a POST request, it parses the data as json and creates a new file 
-        # to save the data. 
-        # the file name is fixed for rn. 
+        # Post request to save data
         try: 
             if (self.path == "/data"): 
                 self._set_headers()
